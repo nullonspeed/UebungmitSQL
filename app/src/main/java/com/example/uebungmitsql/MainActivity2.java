@@ -11,7 +11,7 @@ import android.widget.EditText;
 
 public class MainActivity2 extends AppCompatActivity {
 
-    static int x = 2;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,7 +25,7 @@ public class MainActivity2 extends AppCompatActivity {
         DemoDBhelper demoDBhelper = new DemoDBhelper(this);
         SQLiteDatabase db = demoDBhelper.getWritableDatabase();
         db.execSQL(PersonTbl.STMT_INSERT, new String[] {et1.getText().toString(),et2.getText().toString()});
-        x++;
+
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
 

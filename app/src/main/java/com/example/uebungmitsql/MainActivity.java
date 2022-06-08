@@ -10,7 +10,7 @@ import android.view.View;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
-int x = 1;
+static int x = 1;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,7 +25,7 @@ int x = 1;
 
         DemoDBhelper dbhelper = new DemoDBhelper(this);
         SQLiteDatabase db= dbhelper.getReadableDatabase();
-        Cursor row = db.rawQuery("select Firstname from Patients where id=1",null);
+        Cursor row = db.rawQuery("select Firstname from Patients where id="+x,null);
         row.moveToFirst();
         String name= row.getString(0);
         Toast.makeText(this, ""+name, Toast.LENGTH_SHORT).show();
