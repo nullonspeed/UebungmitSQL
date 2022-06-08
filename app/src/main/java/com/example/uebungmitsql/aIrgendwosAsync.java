@@ -14,22 +14,33 @@ public class aIrgendwosAsync extends AsyncTask<String, Integer, List<Patient>> {
 
     @Override
     protected List<Patient> doInBackground(String... strings) {
+        while(true) {
 
-        DemoDBhelper dBhelper= new DemoDBhelper(MainActivity.s1);
-        SQLiteDatabase db = dBhelper.getReadableDatabase();
-        String vn= "";
-        String nn="";
-        List<Patient> p1 = new ArrayList<>();
-        Cursor rows=db.rawQuery("select Firstname, Lastname from Patients where id>?",new String[]{"3"});
-        while (rows.moveToNext()){
-             vn =rows.getString(0);
-             nn=rows.getString(1);
-            p1.add(new Patient(vn,nn));
+
+            DemoDBhelper dBhelper = new DemoDBhelper(MainActivity.s1);
+            SQLiteDatabase db = dBhelper.getReadableDatabase();
+            String vn = "";
+            String nn = "";
+            List<Patient> p1 = new ArrayList<>();
+            Cursor rows = db.rawQuery("select Firstname, Lastname from Patients where id>?", new String[]{"3"});
+            while (rows.moveToNext()) {
+                vn = rows.getString(0);
+                nn = rows.getString(1);
+                p1.add(new Patient(vn, nn));
+            }
+            rows.close();
+            db.close();
+            MainActivity.pat = p1;
+            MainActivity.mAdapter.notifyDataSetChanged();
+
+            try {
+                Thread.sleep(2000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
         }
-        rows.close();
-        db.close();
 
-        Toast.makeText(MainActivity.s1, ""+p1.get(0).toString(), Toast.LENGTH_SHORT).show();
-        return p1;
+
     }
+
 }
