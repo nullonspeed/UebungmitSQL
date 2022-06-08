@@ -3,6 +3,7 @@ package com.example.uebungmitsql;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.AsyncTask;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,7 +29,7 @@ public class aIrgendwosAsync extends AsyncTask<String, Integer, List<Patient>> {
         rows.close();
         db.close();
 
-
+        Toast.makeText(MainActivity.s1, ""+p1.get(1).toString(), Toast.LENGTH_SHORT).show();
         return p1;
     }
 }
