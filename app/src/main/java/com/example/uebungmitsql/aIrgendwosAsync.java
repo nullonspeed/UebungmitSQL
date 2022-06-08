@@ -3,8 +3,6 @@ package com.example.uebungmitsql;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.AsyncTask;
-import android.util.Log;
-import android.widget.ListView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -22,7 +20,7 @@ public class aIrgendwosAsync extends AsyncTask<String, Integer, List<Patient>> {
         String vn= "";
         String nn="";
         List<Patient> p1 = new ArrayList<>();
-        Cursor rows=db.rawQuery("select Firstname, Lastname from Patients where id>?",new String[]{"3"});
+        Cursor rows=db.rawQuery("select Firstname and Lastname from Patients where id>?",null);
         while (rows.moveToNext()){
              vn =rows.getString(0);
              nn=rows.getString(1);
@@ -30,6 +28,8 @@ public class aIrgendwosAsync extends AsyncTask<String, Integer, List<Patient>> {
         }
         rows.close();
         db.close();
+
+        Toast.makeText(MainActivity.s1, ""+p1.get(1).toString(), Toast.LENGTH_SHORT).show();
         return p1;
     }
 }

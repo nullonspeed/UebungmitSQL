@@ -22,8 +22,10 @@ public class MainActivity2 extends AppCompatActivity {
     public void saveEvent(View view) {
         EditText et1= findViewById(R.id.editTextVN);
         EditText et2= findViewById(R.id.editTextNN);
+
         DemoDBhelper demoDBhelper = new DemoDBhelper(MainActivity.s1);
         SQLiteDatabase db = demoDBhelper.getWritableDatabase();
+
         db.execSQL(PersonTbl.STMT_INSERT, new String[] {et1.getText().toString(),et2.getText().toString()});
 
         Intent intent = new Intent(this, MainActivity.class);
