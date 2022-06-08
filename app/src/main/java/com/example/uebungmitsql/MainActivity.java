@@ -29,10 +29,12 @@ public class MainActivity extends AppCompatActivity {
        s1=this;
        lv = findViewById(R.id.patientLV);
        bindAdapterToListView(lv);
+        startAsyncTask();
+        mAdapter.notifyDataSetChanged();
 
 
     }
-        public void startAsyncTask(View view){
+        public void startAsyncTask(){
         aIrgendwosAsync ask = new aIrgendwosAsync();
         ask.execute("string");
         pat = ask.doInBackground("string");
@@ -57,9 +59,7 @@ public class MainActivity extends AppCompatActivity {
         String name= row.getString(0);
         Toast.makeText(this, ""+name, Toast.LENGTH_SHORT).show();
         x++;
-        mAdapter.notifyDataSetChanged();
-        startAsyncTask(view);
-        mAdapter.notifyDataSetChanged();
+
 
         Intent intent = new Intent(this, MainActivity2.class);
         startActivity(intent);
