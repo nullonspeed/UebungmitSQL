@@ -12,12 +12,12 @@ public class PersonTbl {
                         "("+
                         ID + " INTEGER PRIMARY KEY,"+
                         Firstname + " TEXT NOT NULL,"+
-                        Lastname + " TEXT NOT NULL,"+
-                        ")";
+                        Lastname + " TEXT NOT NULL)";
 
     public static final String STMT_INSERT=
-            "INSERT INTO" + TABLE_NAME+
+            "INSERT INTO " + TABLE_NAME+
                     "("+Firstname+","+Lastname+")"+
                     "VALUES(?,?)";
 
+    public static final String SQL_DROP="DROP TABLE IF EXISTS "+ TABLE_NAME;
 }
