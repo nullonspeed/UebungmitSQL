@@ -30,7 +30,6 @@ public class MainActivity extends AppCompatActivity {
        lv = findViewById(R.id.patientLV);
        bindAdapterToListView(lv);
         startAsyncTask();
-        mAdapter.notifyDataSetChanged();
 
 
     }
@@ -38,6 +37,8 @@ public class MainActivity extends AppCompatActivity {
         aIrgendwosAsync ask = new aIrgendwosAsync();
         ask.execute("string");
         pat = ask.doInBackground("string");
+            mAdapter.notifyDataSetChanged();
+
         }
 
         private void bindAdapterToListView(ListView lv){
