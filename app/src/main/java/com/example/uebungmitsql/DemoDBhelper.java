@@ -7,7 +7,7 @@ import androidx.annotation.Nullable;
 
 public class DemoDBhelper extends SQLiteOpenHelper {
 
-private final static String DB_Name = "patient.db";
+private final static String DB_Name = "patient1.db";
 
     public DemoDBhelper(@Nullable MainActivity context) {
         super(context, DB_Name, null, 2);
@@ -15,7 +15,9 @@ private final static String DB_Name = "patient.db";
 
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
-    sqLiteDatabase.execSQL(PersonTbl.SQL_CREATE);
+
+
+        sqLiteDatabase.execSQL(PersonTbl.SQL_CREATE);
     sqLiteDatabase.execSQL(PersonTbl.STMT_INSERT,new String[] {"sepp", "berta"});
     }
 

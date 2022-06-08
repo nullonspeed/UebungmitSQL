@@ -39,17 +39,34 @@ public class MainActivity extends AppCompatActivity {
 
        lv = findViewById(R.id.patientLV);
        bindAdapterToListView(lv);
-        startAsyncTask();
 
 
-    }
-        public void startAsyncTask(){
-        aIrgendwosAsync ask = new aIrgendwosAsync();
-        ask.execute("string");
-
-
-
+        mAdapter.notifyDataSetChanged();
+        DemoDBhelper dBhelper = new DemoDBhelper(MainActivity.s1);
+        SQLiteDatabase db = dBhelper.getReadableDatabase();
+        String vn = "";
+        String nn = "";
+        List<Patient> p1 = new ArrayList<>();
+        Cursor rows = db.rawQuery("select Firstname, Lastname from Patients where id>?", new String[]{"3"});
+        while (rows.moveToNext()) {
+            String    vn1 = rows.getString(0);
+            String nn1 = rows.getString(1);
+            vn=vn1;
+            nn=nn1;
+            pat.add(new Patient(vn, nn));
         }
+        rows.close();
+        db.close();
+
+        mAdapter.notifyDataSetChanged();
+    }
+       // public void startAsyncTask(){
+
+       // aIrgendwosAsync ask = new aIrgendwosAsync();
+     //   ask.execute("string");
+
+
+       // }
 
         private static void bindAdapterToListView(ListView lv){
         mAdapter= new ArrayAdapter<>(
