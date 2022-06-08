@@ -4,6 +4,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.AsyncTask;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class aIrgendwosAsync extends AsyncTask<String, Integer, List<Patient>> {
@@ -17,11 +18,17 @@ public class aIrgendwosAsync extends AsyncTask<String, Integer, List<Patient>> {
         SQLiteDatabase db = dBhelper.getReadableDatabase();
         String vn= "";
         String nn="";
+        List<Patient> p1 = new ArrayList<>();
+        Cursor rows=db.rawQuery("select Firstname and Lastname from Patients where id>?",null);
+        while (rows.moveToNext()){
+             vn =rows.getString(0);
+             nn=rows.getString(1);
+            p1.add(new Patient(vn,nn));
+        }
+        rows.close();
+        db.close();
 
-        Cursor rows=db.rawQuery("select Firstname from Patients where id>?",null);
 
-        List<Patient> p1 ;
-
-        return null;
+        return p1;
     }
 }
