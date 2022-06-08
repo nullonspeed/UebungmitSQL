@@ -1,6 +1,5 @@
 package com.example.uebungmitsql;
 
-import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
@@ -10,7 +9,7 @@ public class DemoDBhelper extends SQLiteOpenHelper {
 
 private final static String DB_Name = "patient.db";
 
-    public DemoDBhelper(@Nullable Context context) {
+    public DemoDBhelper(@Nullable MainActivity context) {
         super(context, DB_Name, null, 2);
     }
 
