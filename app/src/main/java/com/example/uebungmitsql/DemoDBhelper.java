@@ -17,13 +17,13 @@ private final static String DB_Name = "patient.db";
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
     sqLiteDatabase.execSQL(PersonTbl.SQL_CREATE);
-    sqLiteDatabase.execSQL(PersonTbl.STMT_INSERT,new String[] {"1","sepp", "berta"});
+    sqLiteDatabase.execSQL(PersonTbl.STMT_INSERT,new String[] {"sepp", "berta"});
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
         sqLiteDatabase.execSQL(PersonTbl.SQL_DROP);
         sqLiteDatabase.execSQL(PersonTbl.SQL_CREATE);
-        sqLiteDatabase.execSQL(PersonTbl.STMT_INSERT,new String[] {"1","sepp", "berta"});
+        sqLiteDatabase.execSQL(PersonTbl.STMT_INSERT,new String[] {"sepp", "berta"});
     }
 }
