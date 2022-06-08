@@ -24,7 +24,7 @@ public class MainActivity2 extends AppCompatActivity {
         EditText et2= findViewById(R.id.editTextNN);
         DemoDBhelper demoDBhelper = new DemoDBhelper(this);
         SQLiteDatabase db = demoDBhelper.getWritableDatabase();
-        db.execSQL(PersonTbl.STMT_INSERT, new String[] {String.valueOf(x),et1.getText().toString(),et2.getText().toString()});
+        db.execSQL(PersonTbl.STMT_INSERT, new String[] {et1.getText().toString(),et2.getText().toString()});
         x++;
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
